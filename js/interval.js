@@ -26,7 +26,7 @@ function run(){
     
     setImage(div_status,"image/statusBar.png");
  
-    setText(div_text,[Math.round(alpha),Math.round(beta),Math.round(gamma)]); 
+    setText(div_text,[Math.round(alpha),Math.round(beta),Math.round(gamma)]+"<br>"+[TEST,ip]); 
    
    
 
@@ -37,10 +37,14 @@ function run(){
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const ip = urlParams.get('id');
-//http://boxx/index.html?id=400
 
 const socket = io("http://"+ip+":4622/");            
         
+let TEST = "";
+
+socket.on('ipv4', (ipv4) => {
+    TEST = "接続OK";
+  });
 
 
 let alpha = 0;
