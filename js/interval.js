@@ -38,7 +38,7 @@ const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const ip = urlParams.get('id');
 
-const socket = io("https://bs3-arcade-server-assist-page.glitch.me:4622");            
+const socket = io("https://bs3-arcade-server-assist-page.glitch.me");            
         
 let TEST = "";
 
