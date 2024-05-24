@@ -1,1 +1,1 @@
-# BS3_specialEdition_assistMode
+#  BS3_arcadeEdition_assistMode
