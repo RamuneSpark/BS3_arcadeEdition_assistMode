@@ -3,8 +3,12 @@ function run(){
     
 if(bs == -100){
 
+    setImage(div_mapBase,"image/mapBase.png");
+    setImage(div_mapBaseNeo,"image/mapBaseNeo.png");
+    div_mapBaseNeo.appendChild(div_mapBase);
     div_mapBase.appendChild(div_map);
     div_mapBase.appendChild(div_mark);
+    div_mapBaseNeo.appendChild(div_errorText);
     
 }
 
@@ -36,7 +40,7 @@ if(bs == -100){
     setText(div_text,[Math.round(alpha)]+"<br>"+[TEST,ip]); 
    
    
-    setImage(div_mapBase,"image/mapBase.png");
+
 
     markLo.y = heightGyro();
     markLo.x = widthGyro();
@@ -51,7 +55,13 @@ if(bs == -100){
 
     setImage(div_mark,"image/mark.png");
 
-    
+    if(beta >= 90){
+    fontSet(div_errorText,textErrorColor(),"Higashi","15","bold","right")
+    setText(div_errorText,"デバイスを上に向けないでください！");
+    }else{
+        Remove(div_errorText);
+    }
+
 }
 
 const queryString = window.location.search;
@@ -95,7 +105,7 @@ window.addEventListener("deviceorientation", (event)=>{
 
 function heightGyro(){
 
-let y = beta-60;
+let y = beta-45;
 y *= -1;
 
 if( y >= 20){
@@ -140,11 +150,11 @@ x *= -1;
 let g = gamma;
 g *= 1;
 
-if(x >= 20){
-    x = 20;
+if(x >= 30){
+    x = 30;
 }
-if(x <= -20){
-    x = -20;
+if(x <= -30){
+    x = -30;
 }
 
 if(g >= 30){
@@ -154,7 +164,7 @@ if(g <= -30){
     g = -30
 }
 
-let b = 50 + x*(50/20)+g*(50/30);
+let b = 50 + x*(50/30)+g*(50/30);
 
 if(b <= 0){
     b = 0;

@@ -22,9 +22,19 @@ div_status.style.zIndex = 1001;
 ////出力
 setImage(div_status,"");
 
+document.write( "<div id= mapBaseNeo> </div>" );
+const div_mapBaseNeo = document.getElementById( "mapBaseNeo" );
+defaultSet(div_mapBaseNeo,screen);
+////プロパティ
+putXY(div_mapBaseNeo,"50%","50%")
+transform(div_mapBaseNeo, Center,Center,0,100)
+div_mapBaseNeo.style.zIndex = 1000;
+////出力
+setImage(div_mapBaseNeo,"");
+
 document.write( "<div id= mapBase> </div>" );
 const div_mapBase = document.getElementById( "mapBase" );
-defaultSet(div_mapBase,screen);
+defaultSet(div_mapBase,div_mapBaseNeo);
 ////プロパティ
 putXY(div_mapBase,"50%","50%")
 transform(div_mapBase, Center,Center,0,100)
@@ -46,7 +56,7 @@ setImage(div_map,"");
 let markLo = {x:50,y:50};
 document.write( "<div id= mark> </div>" );
 const div_mark = document.getElementById( "mark" );
-defaultSet(div_mark,div_map);
+defaultSet(div_mark,div_mapBase);
 ////プロパティ
 putXY(div_mark,50+"%",50+"%")
 transform(div_mark, Center,Center,0,100)
@@ -65,3 +75,25 @@ fontSet(div_text,"#FFFFFF","Higashi","20","normal","right")
 div_text.style.zIndex = 10000;
 ////出力
 setText(div_text,"");
+
+document.write( "<div id= errorText> </div>" );
+const div_errorText = document.getElementById( "errorText" );
+defaultSet(div_errorText,mapBaseNeo);
+////プロパティ
+putXY(div_errorText,"50%",-10)
+translate(div_errorText,Center,Bottom);
+fontSet(div_errorText,"#FFFFFF","Higashi","15","bold","right")
+div_errorText.style.zIndex = 10000;
+////出力
+setText(div_errorText,"");
+
+function textErrorColor(){
+
+    let a = (Math.sin(t*0.1)*56+200);
+
+
+ a = Math.round(a);
+
+    return "rgb(256,"+a+","+a+")";
+
+}
