@@ -37,7 +37,7 @@ if(bs == -100){
     
     setImage(div_status,"image/statusBar.png");
  
-    setText(div_text,[Math.round(alpha)]+"<br>"+[TEST,ip]); 
+    setText(div_text,[Math.round(alpha)]+"<br>"+[id]); 
    
    
 
@@ -66,15 +66,16 @@ if(bs == -100){
 
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
-const ip = urlParams.get('id');
+const id = urlParams.get('id');
 
 const socket = io("https://bs3-arcade-server-assist-page.glitch.me/");            
-        
-let TEST = "";
 
-socket.on('ipv4', (id) => {
-    TEST = id;
+socket.on('checkApp', (e) => {
+    id = e;
+    socket.emit('checkAppAnswer',sendData(true));
   });
+
+let TEST = "";
 
 
 let alpha = 0;
@@ -150,18 +151,18 @@ x *= -1;
 let g = gamma;
 g *= 1;
 
-if(x >= 30){
-    x = 30;
+if(x >= 15){
+    x = 15;
 }
-if(x <= -30){
-    x = -30;
+if(x <= -15){
+    x = -15;
 }
 
-if(g >= 30){
-    g = 30
+if(g >= 15){
+    g = 15
 }
-if(g <= -30){
-    g = -30
+if(g <= -15){
+    g = -15
 }
 
 let b = 50 + x*(50/30)+g*(50/30);

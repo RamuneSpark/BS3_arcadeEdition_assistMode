@@ -447,3 +447,11 @@ function touchElement2(e1,e2){
     
     
 }
+
+const secretCode = "2387r4698734tbcg78t8xnsegueyfg67wi387yhr38o9731801eury893724bcv8cub3r901738tr923xtgfyuewgfyurgf3udyo1391ugt193eung3ungcfy1g13804crctwioeugfrusgdfhgd2171yoy801u43etn897urgeh7erygfbryud23937302d1";
+function sendData(e){
+
+    const a = {code:secretCode,id:id,data:e};
+    return a;
+
+}
