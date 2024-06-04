@@ -37,7 +37,7 @@ if(bs == -100){
     
     setImage(div_status,"image/statusBar.png");
  
-    setText(div_text,[Math.round(alpha)]+"<br>"+[id]); 
+    setText(div_text,[Math.round(alpha),Math.round(gamma)]+"<br>"+[id]); 
    
    
 
@@ -158,14 +158,14 @@ if(x <= -15){
     x = -15;
 }
 
-if(g >= 15){
-    g = 15
+if(g >= 30){
+    g = 30;
 }
-if(g <= -15){
-    g = -15
+if(g <= -30){
+    g = -30
 }
 
-let b = 50 + x*(50/30)+g*(50/30);
+let b = 50 + x*(50/15)+g*(50/30);
 
 if(b <= 0){
     b = 0;
