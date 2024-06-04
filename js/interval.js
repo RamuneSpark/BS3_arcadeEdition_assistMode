@@ -71,7 +71,6 @@ const id = urlParams.get('id');
 const socket = io("https://bs3-arcade-server-assist-page.glitch.me/");            
 
 socket.on('checkApp', (e) => {
-    id = e;
     socket.emit('checkAppAnswer',sendData(true));
   });
 
