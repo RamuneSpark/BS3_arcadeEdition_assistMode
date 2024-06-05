@@ -105,7 +105,7 @@ window.addEventListener("deviceorientation", (event)=>{
 
 function heightGyro(){
 
-let y = beta-55;
+let y = beta-35;
 y *= -1;
 
 if( y >= 20){
