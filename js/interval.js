@@ -9,6 +9,7 @@ if(bs == -100){
     div_mapBase.appendChild(div_map);
     div_mapBase.appendChild(div_mark);
     div_mapBaseNeo.appendChild(div_errorText);
+    div_mapBaseNeo.appendChild(div_tapNavi);
     
 }
 
@@ -57,10 +58,13 @@ if(bs == -100){
 
     if(beta >= 90){
     fontSet(div_errorText,textErrorColor(),"Higashi","15","bold","right")
-    setText(div_errorText,"デバイスを上に向けないでください！");
+    setText(div_errorText,"デバイスを"+Rb("上","うえ")+"に"+Rb("向","む")+"けないでください！");
     }else{
         Remove(div_errorText);
     }
+
+    setText(div_tapNavi,""+Rb("上","うえ")+"のスクエアエリアに"+Rb("触","ふ")+"れると、<br>ツインクルを"+Rb("発射","はっしゃ")+"します。");
+    
 
 }
 
@@ -179,3 +183,11 @@ return b;
 }
 
 
+div_mapBaseNeo.addEventListener("touchstart", (e) => {
+
+e.preventDefault();
+
+console.log(true);
+socket.emit('sendTwinkle',sendData([markLo.x,markLo.y]));
+
+});

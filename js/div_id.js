@@ -87,6 +87,17 @@ div_errorText.style.zIndex = 10000;
 ////出力
 setText(div_errorText,"");
 
+document.write( "<div id= tapNavi> </div>" );
+const div_tapNavi = document.getElementById( "tapNavi" );
+defaultSet(div_tapNavi,mapBaseNeo);
+////プロパティ
+putXY(div_tapNavi,"50%","102%")
+translate(div_tapNavi,Center,Top);
+fontSet(div_tapNavi,"#FFFFFF","Higashi","15","bold","center")
+div_tapNavi.style.zIndex = 10000;
+////出力
+setText(div_tapNavi,"");
+
 function textErrorColor(){
 
     let a = (Math.sin(t*0.1)*56+200);
