@@ -1,6 +1,27 @@
 //ここに書いてある項目が1/50秒に1回実行されます。
 function run(){
     
+
+    if(aShift == 0 && bs == 0){
+        statusLo.t += 0.04;
+    
+            statusLo.y = Math.sin(statusLo.t)*115-768;
+    
+            if(statusLo.t >= Math.PI*(1/2)){
+    
+                aShift = 1;
+                statusLo.t = 0;
+                statusLo.y = 115-768;
+    
+            }
+    
+        }
+        if(scene !== "ca"){
+            setImage(div_status,"image/statusBar.png");
+        }
+        
+if(scene === "twinkle"){
+
 if(bs == -100){
 
     setImage(div_mapBase,"image/mapBase.png");
@@ -13,20 +34,6 @@ if(bs == -100){
     
 }
 
-    if(aShift == 0 && bs == 0){
-    statusLo.t += 0.04;
-
-        statusLo.y = Math.sin(statusLo.t)*115-768;
-
-        if(statusLo.t >= Math.PI*(1/2)){
-
-            aShift = 1;
-            statusLo.t = 0;
-            statusLo.y = 115-768;
-
-        }
-
-    }
 
     if(statusLo.y)
 
@@ -36,7 +43,7 @@ if(bs == -100){
     setImage(div_bg,"image/bg.jpg")
     
     
-    setImage(div_status,"image/statusBar.png");
+
  
     setText(div_text,[Math.round(alpha),Math.round(gamma)]+"<br>"+[id]); 
    
@@ -63,8 +70,21 @@ if(bs == -100){
         Remove(div_errorText);
     }
 
-    setText(div_tapNavi,""+Rb("上","うえ")+"のスクエアエリアに"+Rb("触","ふ")+"れると、<br>ツインクルを"+Rb("発射","はっしゃ")+"します。");
+    setText(div_tapNavi,""+Rb("上","うえ")+"のスクリーンエリアをタップすると、<br>"+Rb("黄色","きいろ")+"のマークに"+Rb("向","む")+"かってツインクルを"+Rb("発射","はっしゃ")+"します。");
     
+    putXY(div_tapCa,"5%","95%")
+    setImage(div_tapCa,"image/ca.png");
+    translate(div_tapCa,Left,Bottom);
+
+}else if(scene === "ca"){
+
+    putXY(div_tapCa,"50%","95%")
+    setImage(div_bg,"image/bgCa.jpg")
+    setImage(div_tapCa,"image/caOK.png");
+    translate(div_tapCa,Center,Bottom);
+
+
+}
 
 }
 
@@ -191,3 +211,17 @@ console.log(true);
 socket.emit('sendTwinkle',sendData([markLo.x,markLo.y]));
 
 });
+
+div_tapCa.addEventListener("touchstart", (e) => {
+
+    if(scene === "twinkle" && bs === 0){
+    e.preventDefault();
+    nextScene = "ca";
+    }else if(scene === "ca" && bs === 0){
+    e.preventDefault();
+    calibration.mode = 0;
+    nextScene = "twinkle";
+    }
+
+    });
+    

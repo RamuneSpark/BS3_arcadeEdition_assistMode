@@ -13,6 +13,8 @@ let change = 0;
 let change_level = 0.1;
 let change_time = 0;
 
+let ct = 1;
+
 function blackout(){
 
 if(nextScene != undefined　&& bs != 100 && bs != 101 && bs != -100){
@@ -31,7 +33,7 @@ if(nextScene != undefined　&& bs != 100 && bs != 101 && bs != -100){
         
                   change_time++;
         
-        if(change_time >= fps){
+        if(change_time >= ct){
             
             scene = nextScene;
             
