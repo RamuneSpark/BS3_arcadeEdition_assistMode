@@ -1,7 +1,7 @@
 //ここに書いてある項目が1/50秒に1回実行されます。
 function run(){
     
-
+    if(scene !== "ca" && scene !== "howTo"){
     if(aShift == 0 && bs == 0){
         statusLo.t += 0.04;
     
@@ -16,7 +16,7 @@ function run(){
             }
     
         }
-        if(scene !== "ca"){
+
             setImage(div_status,"image/statusBar.png");
         }
         
@@ -76,10 +76,20 @@ if(bs == -100){
     setImage(div_tapCa,"image/ca.png");
     translate(div_tapCa,Left,Bottom);
 
+    setImage(div_tapHowTo,"image/howTo.png");
+
 }else if(scene === "ca"){
 
     putXY(div_tapCa,"50%","95%")
     setImage(div_bg,"image/bgCa.jpg")
+    setImage(div_tapCa,"image/caOK.png");
+    translate(div_tapCa,Center,Bottom);
+
+
+}else if(scene === "howTo"){
+
+    putXY(div_tapCa,"50%","95%")
+    setImage(div_bg,"image/bgHowTo.jpg")
     setImage(div_tapCa,"image/caOK.png");
     translate(div_tapCa,Center,Bottom);
 
@@ -219,13 +229,26 @@ socket.emit('sendTwinkle',sendData([markLo.x,markLo.y]));
 
 div_tapCa.addEventListener("touchstart", (e) => {
 
+    e.preventDefault();
+   
+
     if(scene === "twinkle" && bs === 0){
-    e.preventDefault();
     nextScene = "ca";
-    }else if(scene === "ca" && bs === 0){
-    e.preventDefault();
+    }else if((scene === "howTo"||scene === "ca") && bs === 0){
     calibration.mode = 0;
     nextScene = "twinkle";
+    }
+
+    });
+    
+
+    div_tapHowTo.addEventListener("touchstart", (e) => {
+
+        e.preventDefault();
+   
+
+    if(scene === "twinkle" && bs === 0){
+    nextScene = "howTo";
     }
 
     });

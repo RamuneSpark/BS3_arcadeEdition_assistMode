@@ -108,6 +108,16 @@ div_tapCa.style.zIndex = 10000;
 ////出力
 setText(div_tapCa,"");
 
+document.write( "<div id= tapHowTo> </div>" );
+const div_tapHowTo = document.getElementById( "tapHowTo" );
+defaultSet(div_tapHowTo,screen);
+////プロパティ
+putXY(div_tapHowTo,"95%","35%")
+translate(div_tapHowTo,Right,Bottom);
+div_tapHowTo.style.zIndex = 10000;
+////出力
+setText(div_tapHowTo,"");
+
 function textErrorColor(){
 
     let a = (Math.sin(t*0.1)*56+200);
