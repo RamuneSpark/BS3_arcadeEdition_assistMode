@@ -26,7 +26,7 @@ function soundPlayer(){
 function soundPlay(e,v,l,s){
     
     if(allowSound === 1){
-    e.volume = v*(0.25);
+    e.volume = v*(0.5);
     e.loop = l;
     e.src = "mp3/"+s+".mp3";
     e.play();
