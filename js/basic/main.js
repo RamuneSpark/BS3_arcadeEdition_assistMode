@@ -25,5 +25,7 @@ function move( ) {
     //デバッグ
     //debug();
     
-    
+
+    soundPlayer();
+
 }
