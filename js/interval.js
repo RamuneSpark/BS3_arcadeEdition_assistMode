@@ -398,7 +398,9 @@ div_mapBaseNeo.addEventListener("touchstart", (e) => {
 e.preventDefault();
 
 console.log(true);
-socket.emit('sendTwinkle',sendData([markLo.x,markLo.y,cn,cS]));
+
+let a = Math.floor(Math.random() * 10);
+socket.emit(a+'sendTwinkle',sendData([markLo.x,markLo.y,cn,cS]));
 
 });
 
