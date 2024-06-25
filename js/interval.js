@@ -399,8 +399,7 @@ e.preventDefault();
 
 console.log(true);
 
-let a = Math.floor(Math.random() * 10);
-socket.emit(a+'sendTwinkle',sendData([markLo.x,markLo.y,cn,cS]));
+socket.emit('sendTwinkle',sendData([markLo.x,markLo.y,cn,cS]));
 
 });
 
