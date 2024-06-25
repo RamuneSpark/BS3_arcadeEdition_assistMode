@@ -62,6 +62,7 @@ defaultSet(div_map,screen);
 ////プロパティ
 transform(div_map, Center,Center,0,100)
 div_map.style.zIndex = 1002;
+div_map.style.overflow = "hidden";
 ////出力
 setImage(div_map,"");
 
@@ -288,3 +289,36 @@ function textErrorColor(){
     return "rgb(256,"+a+","+a+")";
 
 }
+
+let div_floor = [];
+for(let i = 0; i < 11; i++){
+    div_floor[i] = [];
+    for(let j = 0; j < 17; j++){
+    document.write( "<div id= floor"+i+"_"+j+"> </div>" );
+    div_floor[i][j] = document.getElementById( "floor"+i+"_"+j );
+    defaultSet(div_floor[i][j],div_map);
+    
+    ////プロパティ
+    putXY(div_floor[i][j],
+        (1440*0.5+92*(j-8))*(300/1440),
+        (960*0.5+92*(i-5)+40)*(200/960))
+    translate(div_floor[i][j], Center,Center)
+    div_floor[i][j].style.zIndex = 1;
+    div_floor[i][j].style.mixBlendMode = "normal";
+        setImage(div_floor[i][j],"");
+    ////出力
+    
+    }
+    }
+
+    let stageMap = [[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]];

@@ -77,6 +77,14 @@ if(bs == -100){
 
     setImage(div_mapBase,"image/mapBase.png");
     setImage(div_mapBaseNeo,"image/mapBaseNeo.png");
+    setImage(div_map,"image/map.png");
+
+    for(let i = 0; i < 11; i++){for(let j = 0; j < 17; j++){
+
+        div_map.appendChild(div_floor[i][j]);
+
+        }}
+
     div_mapBaseNeo.appendChild(div_mapBase);
     div_mapBase.appendChild(div_map);
     div_mapBase.appendChild(div_mark);
@@ -117,6 +125,17 @@ if(BGX <= -380){
     setImage(div_bg,"image/bg.jpg")
     setImage(div_bg2,"image/bg.jpg")
     
+
+    for(let i = 0; i < 11; i++){for(let j = 0; j < 17; j++){
+
+        if(stageMap[i][j] !== 0){
+            setImage(div_floor[i][j],"image/block.png");
+        }else{
+            Remove(div_floor[i][j]);
+        }
+
+
+    }}
     
 
  
@@ -134,7 +153,6 @@ if(BGX <= -380){
 
 
     putXY(div_map,(330/2)+(300)*(mapLo.x-50)*0.01,(220/2)+(200)*(mapLo.y-50)*0.01)
-    setImage(div_map,"image/map.png");
 
     setImage(div_mark,"image/mark.png");
 
@@ -258,6 +276,12 @@ const socket = io("https://bs3-arcade-server-assist-page.glitch.me/");
 socket.on('checkApp', (e) => {
     socket.emit('checkAppAnswer',sendData(true));
   });
+
+  socket.on('mapData_server-Phone', (e) => {
+  stageMap = e;
+});
+
+
 
 let TEST = "";
 
