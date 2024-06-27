@@ -403,6 +403,11 @@ socket.emit('sendTwinkle',sendData([markLo.x,markLo.y,cn,cS]));
 
 });
 
+
+if(phone){
+    document.addEventListener("click", function() { DeviceMotionEvent.requestPermission();})
+}
+
 div_tapCa.addEventListener("touchstart", (e) => {
 
     e.preventDefault();
