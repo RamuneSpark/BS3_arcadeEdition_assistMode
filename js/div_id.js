@@ -44,6 +44,8 @@ div_mapBaseNeo.style.zIndex = 1000;
 ////出力
 setImage(div_mapBaseNeo,"");
 
+let mapBaseNeoOpacity = 1;
+
 document.write( "<div id= mapBase> </div>" );
 const div_mapBase = document.getElementById( "mapBase" );
 defaultSet(div_mapBase,div_mapBaseNeo);

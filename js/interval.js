@@ -163,8 +163,13 @@ if(BGX <= -380){
         Remove(div_errorText);
     }
 
+    if(mapBaseNeoOpacity >= 1){
     setText(div_tapNavi,""+Rb("上","うえ")+"のスクリーンエリアをタップすると、<br>"+Rb("黄色","きいろ")+"のマークに"+Rb("向","む")+"かってツインクルを"+Rb("発射","はっしゃ")+"します。");
+    }else{
+        Remove(div_tapNavi);
     
+    }
+
     putXY(div_tapCa,"5%","95%")
     setImage(div_tapCa,"image/ca.png");
     translate(div_tapCa,Left,Bottom);
@@ -244,6 +249,18 @@ setImage(div_customSelect[i],"image/twinkle/select"+i+"_"+customSelctFrame.p+".p
 
     setImage(div_tapSound,"image/sound"+allowSound+".png");
 
+
+
+    mapBaseNeoOpacity+=0.03;
+
+if(mapBaseNeoOpacity >= 1){
+
+    mapBaseNeoOpacity = 1;
+
+}
+
+div_mapBaseNeo.style.opacity = mapBaseNeoOpacity;
+    
 }else if(scene === "ca"){
 
     
@@ -397,9 +414,10 @@ div_mapBaseNeo.addEventListener("touchstart", (e) => {
 
 e.preventDefault();
 
-console.log(true);
-
+if(mapBaseNeoOpacity == 1){
 socket.emit('sendTwinkle',sendData([markLo.x,markLo.y,cn,cS]));
+mapBaseNeoOpacity = 0;
+}
 
 });
 
