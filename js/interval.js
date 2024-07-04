@@ -139,7 +139,7 @@ if(BGX <= -380){
     
 
  
-    setText(div_text,[Math.round(alpha),Math.round(gamma)]+"<br>"+[id]); 
+    setText(div_text,hostScene); 
    
    
 
@@ -296,6 +296,12 @@ socket.on('checkApp', (e) => {
 
   socket.on('mapData_server-Phone', (e) => {
   stageMap = e;
+});
+
+let hostScene = "";
+
+socket.on('scene_server-Phone', (e) => {
+ hostScene = e;
 });
 
 
