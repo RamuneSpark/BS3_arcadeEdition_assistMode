@@ -123,6 +123,17 @@ div_tapCa.style.zIndex = 10000;
 ////出力
 setImage(div_tapCa,"");
 
+let jReqOpacity = 1;
+document.write( "<div id= tapJReq> </div>" );
+const div_tapJReq = document.getElementById( "tapJReq" );
+defaultSet(div_tapJReq,screen);
+////プロパティ
+putXY(div_tapJReq,"95%","5%")
+translate(div_tapJReq,Bottom,Top);
+div_tapJReq.style.zIndex = 10000;
+////出力
+setImage(div_tapJReq,"");
+
 let cus_Rotate = 0;
 let cus_RotateV = 0;
 

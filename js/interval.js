@@ -270,6 +270,17 @@ div_mapBaseNeo.style.opacity = mapBaseNeoOpacity;
     setImage(div_tapCa,"image/caOK.png");
     translate(div_tapCa,Center,Bottom);
 
+    jReqOpacity += 0.05;
+
+    if(jReqOpacity >= 1){
+        jReqOpacity = 1;
+    }
+
+    if(window.DeviceOrientationEvent){
+        if(DeviceOrientationEvent.requestPermission){
+            div_tapJReq.style.opacity = jReqOpacity;
+    setImage(div_tapJReq,"image/jReq.png");
+        }}
 
 }else if(scene === "howTo"){
 
@@ -432,7 +443,8 @@ if(phone){
     if(window.DeviceOrientationEvent){
         // ★iOS13向け: ユーザーにアクセスの許可を求める関数があるか？
         if(DeviceOrientationEvent.requestPermission){
-            document.addEventListener("click", function(){
+            div_tapJReq.addEventListener("touchstart", function(){
+                jReqOpacity = 0.3;
                 // ★ジャイロセンサーのアクセス許可をリクエストする
                 DeviceOrientationEvent.requestPermission().then(function(response){
                     // リクエストが許可されたら
