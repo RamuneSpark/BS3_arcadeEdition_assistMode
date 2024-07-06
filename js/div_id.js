@@ -30,7 +30,7 @@ defaultSet(div_status,screen);
 ////プロパティ
 putXY(div_status,0,statusLo.y)
 transform(div_status, Left,Left,0,100)
-div_status.style.zIndex = 100000;
+div_status.style.zIndex = 10000000;
 ////出力
 setImage(div_status,"");
 
@@ -218,20 +218,44 @@ setImage(div_customColor[i],"");
 customColorOpacity[i] = 1;
 }
 
+let team = null;
 let div_teamSelect = [];
+let te = 0;
 for(let i = 0; i < 2; i++){
 document.write( "<div id= teamSelect"+i+"> </div>" );
 div_teamSelect[i] = document.getElementById( "teamSelect"+i );
 defaultSet(div_teamSelect[i],screen);
 ////プロパティ
-translate(div_teamSelect[i],Center,Center);
+transform(div_teamSelect[i],Center,Center,0,120);
 div_teamSelect[i].style.zIndex = 1000000;
 ////出力
 setImage(div_teamSelect[i],"");
-}
-putXY(div_teamSelect[0],(100*(1/3)-7)+"%","50%")
-putXY(div_teamSelect[1],(100*(2/3)+7)+"%","50%")
 
+}
+putXY(div_teamSelect[0],"50%","43%")
+putXY(div_teamSelect[1],"50%","63%")
+
+document.write( "<div id= vs> </div>" );
+const div_vs = document.getElementById( "vs" );
+defaultSet(div_vs,screen);
+////プロパティ
+putXY(div_vs,"50%","53.5%")
+transform(div_vs,Center,Center,0,120);
+div_vs.style.zIndex = 10000;
+////出力
+setImage(div_vs,"");
+
+document.write( "<div id= teamText> </div>" );
+const div_teamText = document.getElementById( "teamText" );
+defaultSet(div_teamText,screen);
+////プロパティ
+putXY(div_teamText,"50%","30%")
+translate(div_teamText,Center,Center);
+fontSet(div_teamText,"#FFFFFF","Higashi","18","bold","center")
+div_teamText.style.zIndex = 10000;
+textEdge(div_teamText,2,"#000000")
+////出力
+setText(div_teamText,"");
 
 const customName = ["","ribbon","samurai","cat","pirate","zonk","cry","paint","racquet","japan"];
 const customJapaneseName = ["いつもの","れでぃー","ちょんまげ","ねこ","かいぞく","さんぐらす","なきむし","ぺいんたー","らけっとぼーる","てんかいち"];

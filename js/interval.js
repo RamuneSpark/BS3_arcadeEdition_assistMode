@@ -139,7 +139,7 @@ if(BGX <= -380){
     
 
  
-    setText(div_text,hostScene); 
+    setText(div_text,[hostScene,playingBattle]); 
    
    
 
@@ -174,7 +174,6 @@ if(BGX <= -380){
     setImage(div_tapCa,"image/ca.png");
     translate(div_tapCa,Left,Bottom);
 
-    setImage(div_tapHowTo,"image/howTo.png");
     setImage(div_tapCustom,"image/twinkle/"+colorName[cn]+"0.png");
 
     div_tapCustom.appendChild(div_tapCustom2);
@@ -262,12 +261,26 @@ if(mapBaseNeoOpacity >= 1){
 
 
 if(hostScene === "battleInfo" || hostScene === "battleRule" || hostScene === "battleStage"){
-for(let i = 0; i < 2; i++){
+    te++;
+    for(let i = 0; i < 2; i++){
     
     setImage(div_teamSelect[i],"image/"+(i+1)+"p.png");
+
+    if(team === i){
+        transform(div_teamSelect[i],Center,Center,0,(Math.cos(te*0.16))*12+168);
+        div_teamSelect[i].style.opacity = 1.2;
+    }else{
+        transform(div_teamSelect[i],Center,Center,0,130);
+        div_teamSelect[i].style.opacity = 0.7;
     }
 
+    }
+
+    setImage(div_vs,"image/vs.png");
     div_mapBaseNeo.style.opacity = 0;
+    Remove(div_tapHowTo);
+    setText(div_teamText,"チームを"+Rb("選択","せんたく")+"してください！");
+
 
 }else{
 
@@ -277,6 +290,10 @@ for(let i = 0; i < 2; i++){
         }
     
     div_mapBaseNeo.style.opacity = mapBaseNeoOpacity;
+    Remove(div_vs);
+    setImage(div_tapHowTo,"image/howTo.png");
+    Remove(div_teamText);
+
 
 }
 
@@ -319,6 +336,24 @@ const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const id = urlParams.get('id');
 
+let teamData = localStorage.getItem("bs3_assistData_621820623");
+teamData = JSON.parse(teamData);
+
+if(teamData !== null){
+
+    if(id !== teamData[0]){
+        teamData = null;
+        localStorage.removeItem("bs3_assistData_621820623");
+    }else{
+        team = teamData[1];
+        te = 0;
+        
+    }
+
+}
+console.log(teamData);
+
+
 const socket = io("https://bs3-arcade-server-assist-page.glitch.me/");            
 
 socket.on('checkApp', (e) => {
@@ -332,10 +367,11 @@ socket.on('checkApp', (e) => {
 let hostScene = "";
 
 socket.on('scene_server-Phone', (e) => {
- hostScene = e;
+ hostScene = e[0];
+ playingBattle = e[1];
 });
 
-
+let playingBattle;
 
 let TEST = "";
 
@@ -598,3 +634,19 @@ allowSound = 0;
 }
 
 });
+
+
+for(let i = 0; i < 2; i++){
+
+    div_teamSelect[i].addEventListener("touchstart", (e) => {
+
+        e.preventDefault();
+   
+        if(i !== team){
+        te = 0;
+        team = i;
+        soundName[0] = "select";
+        localStorage.setItem("bs3_assistData_621820623",JSON.stringify([id,team]));
+        }
+    });
+}
