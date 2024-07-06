@@ -402,7 +402,7 @@ socket.on('scene_server-Phone', (e) => {
  hostScene = e[0];
  playingBattle = e[1];
 
-if(hostScene === "battleInfo"){
+if(hostScene === "battleInfo" && team !== null){
     socket.emit('team',sendData(team+1));
        
 }
