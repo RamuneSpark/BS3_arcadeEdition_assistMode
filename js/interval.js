@@ -374,6 +374,7 @@ const socket = io("https://bs3-arcade-server-assist-page.glitch.me/");
 
 socket.on('checkApp', (e) => {
     socket.emit('checkAppAnswer',sendData(true));
+    socket.emit('team',sendData(team+1));
   });
 
   socket.on('mapData_server-Phone', (e) => {
