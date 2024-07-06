@@ -268,13 +268,16 @@ if(hostScene === "battleInfo" || hostScene === "battleRule" || hostScene === "ba
 
     if(team === i){
         transform(div_teamSelect[i],Center,Center,0,(Math.cos(te*0.16))*12+168);
-        div_teamSelect[i].style.opacity = 1.2;
+        div_teamSelect[i].style.opacity = 1;
     }else{
         transform(div_teamSelect[i],Center,Center,0,130);
         div_teamSelect[i].style.opacity = 0.7;
     }
 
     }
+
+    putXY(div_teamSelect[0],"50%","43%")
+    putXY(div_teamSelect[1],"50%","63%")
 
     setImage(div_vs,"image/vs.png");
     div_mapBaseNeo.style.opacity = 0;
@@ -284,10 +287,20 @@ if(hostScene === "battleInfo" || hostScene === "battleRule" || hostScene === "ba
 
 }else{
 
+    if(playingBattle ==1 && (hostScene == "game" || hostScene == "start" || hostScene == "draw" || hostScene == "scoreBoard" || hostScene == "victory")){
+
+        Remove(div_teamSelect[1]);
+        setImage(div_teamSelect[0],"image/"+(team+1)+"p.png");
+        div_teamSelect[0].style.opacity = 1;
+        putXY(div_teamSelect[0],"30%","80%")
+
+    }else{
     for(let i = 0; i < 2; i++){
     
         Remove(div_teamSelect[i]);
         }
+    }
+
     
     div_mapBaseNeo.style.opacity = mapBaseNeoOpacity;
     Remove(div_vs);
@@ -642,7 +655,7 @@ for(let i = 0; i < 2; i++){
 
         e.preventDefault();
    
-        if(i !== team){
+        if(i !== team && (hostScene === "battleInfo" || hostScene === "battleRule" || hostScene === "battleStage")){
         te = 0;
         team = i;
         soundName[0] = "select";
