@@ -259,7 +259,27 @@ if(mapBaseNeoOpacity >= 1){
 
 }
 
-div_mapBaseNeo.style.opacity = mapBaseNeoOpacity;
+
+
+if(hostScene === "battleInfo" || hostScene === "battleRule" || hostScene === "battleStage"){
+for(let i = 0; i < 2; i++){
+    
+    setImage(div_teamSelect[i],"image/"+(i+1)+"p.png");
+    }
+
+    div_mapBaseNeo.style.opacity = 0;
+
+}else{
+
+    for(let i = 0; i < 2; i++){
+    
+        Remove(div_teamSelect[i]);
+        }
+    
+    div_mapBaseNeo.style.opacity = mapBaseNeoOpacity;
+
+}
+
     
 }else if(scene === "ca"){
 

@@ -218,6 +218,21 @@ setImage(div_customColor[i],"");
 customColorOpacity[i] = 1;
 }
 
+let div_teamSelect = [];
+for(let i = 0; i < 2; i++){
+document.write( "<div id= teamSelect"+i+"> </div>" );
+div_teamSelect[i] = document.getElementById( "teamSelect"+i );
+defaultSet(div_teamSelect[i],screen);
+////プロパティ
+translate(div_teamSelect[i],Center,Center);
+div_teamSelect[i].style.zIndex = 1000000;
+////出力
+setImage(div_teamSelect[i],"");
+}
+putXY(div_teamSelect[0],(100*(1/3)-7)+"%","50%")
+putXY(div_teamSelect[1],(100*(2/3)+7)+"%","50%")
+
+
 const customName = ["","ribbon","samurai","cat","pirate","zonk","cry","paint","racquet","japan"];
 const customJapaneseName = ["いつもの","れでぃー","ちょんまげ","ねこ","かいぞく","さんぐらす","なきむし","ぺいんたー","らけっとぼーる","てんかいち"];
 let div_customSelect = [];
