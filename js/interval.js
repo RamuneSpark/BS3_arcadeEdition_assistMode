@@ -406,6 +406,7 @@ socket.on('scene_server-Phone', (e) => {
 socket.on('accessError', (e) => {
     
 error = 1;
+nextScene = "error";
 
 });
 
