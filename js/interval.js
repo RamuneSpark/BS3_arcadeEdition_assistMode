@@ -7,7 +7,7 @@ if(error === 1 && scene !== "error"){
 
 }
 
-    if(scene !== "ca" && scene !== "howTo"){
+    if(scene !== "ca" && scene !== "howTo" && scene !== "error"){
     if(aShift == 0 && bs == 0){
         statusLo.t += 0.04;
     
