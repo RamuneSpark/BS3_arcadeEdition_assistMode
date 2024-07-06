@@ -1,6 +1,12 @@
 //ここに書いてある項目が1/50秒に1回実行されます。
 function run(){
     
+if(error === 1 && scene !== "error"){
+
+    nextScene = "error";
+
+}
+
     if(scene !== "ca" && scene !== "howTo"){
     if(aShift == 0 && bs == 0){
         statusLo.t += 0.04;
@@ -343,6 +349,13 @@ if((team === null && playingBattle ==1 && (hostScene == "game" || hostScene == "
     translate(div_tapCa,Center,Bottom);
 
 
+}else if(scene === "error"){
+
+    putXY(div_bg,0,0)
+    setImage(div_bg,"image/bgError.jpg")
+    
+
+
 }
 
 }
@@ -389,6 +402,14 @@ socket.on('scene_server-Phone', (e) => {
  hostScene = e[0];
  playingBattle = e[1];
 });
+
+socket.on('accessError', (e) => {
+    
+error = 1;
+
+});
+
+let error = 0;
 
 let playingBattle;
 
