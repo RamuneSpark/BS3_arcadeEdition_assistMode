@@ -658,7 +658,7 @@ for(let i = 0; i < 2; i++){
 
         e.preventDefault();
    
-        if(i !== team && (hostScene === "battleInfo" || hostScene === "battleRule" || hostScene === "battleStage")){
+        if(i !== team && ((team === null && playingBattle ==1 && (hostScene == "game" || hostScene == "start" || hostScene == "draw" || hostScene == "scoreBoard")) || (hostScene === "battleInfo" || hostScene === "battleRule" || hostScene === "battleStage"))){
         te = 0;
         team = i;
         soundName[0] = "select";
