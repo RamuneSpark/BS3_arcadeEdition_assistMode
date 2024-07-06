@@ -374,7 +374,9 @@ const socket = io("https://bs3-arcade-server-assist-page.glitch.me/");
 
 socket.on('checkApp', (e) => {
     socket.emit('checkAppAnswer',sendData(true));
+    if(team !== null){
     socket.emit('team',sendData(team+1));
+    }
   });
 
   socket.on('mapData_server-Phone', (e) => {
@@ -664,7 +666,9 @@ for(let i = 0; i < 2; i++){
         team = i;
         soundName[0] = "select";
         localStorage.setItem("bs3_assistData_621820623",JSON.stringify([id,team]));
-        socket.emit('team',sendData(team+1))
+        if(team !== null){
+            socket.emit('team',sendData(team+1));
+            }
         }
     });
 }
