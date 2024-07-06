@@ -504,7 +504,7 @@ div_mapBaseNeo.addEventListener("touchstart", (e) => {
 e.preventDefault();
 
 if(mapBaseNeoOpacity == 1){
-socket.emit('sendTwinkle',sendData([markLo.x,markLo.y,cn,cS]));
+socket.emit('sendTwinkle',sendData([markLo.x,markLo.y,cn,cS,(team+1)]));
 mapBaseNeoOpacity = 0;
 }
 
