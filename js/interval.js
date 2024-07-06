@@ -401,6 +401,12 @@ let hostScene = "";
 socket.on('scene_server-Phone', (e) => {
  hostScene = e[0];
  playingBattle = e[1];
+
+if(hostScene === "battleInfo"){
+    socket.emit('team',sendData(team+1));
+       
+}
+
 });
 
 socket.on('accessError', (e) => {
