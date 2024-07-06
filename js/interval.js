@@ -293,6 +293,8 @@ if(hostScene === "battleInfo" || hostScene === "battleRule" || hostScene === "ba
         setImage(div_teamSelect[0],"image/"+(team+1)+"p.png");
         div_teamSelect[0].style.opacity = 1;
         putXY(div_teamSelect[0],"30%","80%")
+        transform(div_teamSelect[0],Center,Center,0,130);
+    
 
     }else{
     for(let i = 0; i < 2; i++){
