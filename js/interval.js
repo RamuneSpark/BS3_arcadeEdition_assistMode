@@ -260,7 +260,7 @@ if(mapBaseNeoOpacity >= 1){
 
 
 
-if(hostScene === "battleInfo" || hostScene === "battleRule" || hostScene === "battleStage"){
+if((team === null && playingBattle ==1 && (hostScene == "game" || hostScene == "start" || hostScene == "draw" || hostScene == "scoreBoard")) || (hostScene === "battleInfo" || hostScene === "battleRule" || hostScene === "battleStage")){
     te++;
     for(let i = 0; i < 2; i++){
     
@@ -287,7 +287,7 @@ if(hostScene === "battleInfo" || hostScene === "battleRule" || hostScene === "ba
 
 }else{
 
-    if(playingBattle ==1 && (hostScene == "game" || hostScene == "start" || hostScene == "draw" || hostScene == "scoreBoard" || hostScene == "victory")){
+    if(team !== null && playingBattle ==1 && (hostScene == "game" || hostScene == "start" || hostScene == "draw" || hostScene == "scoreBoard" || hostScene == "victory")){
 
         Remove(div_teamSelect[1]);
         setImage(div_teamSelect[0],"image/"+(team+1)+"p.png");
@@ -358,6 +358,7 @@ if(teamData !== null){
 
     if(id !== teamData[0]){
         teamData = null;
+        team = null;
         localStorage.removeItem("bs3_assistData_621820623");
     }else{
         team = teamData[1];
