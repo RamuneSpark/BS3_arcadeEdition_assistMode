@@ -409,10 +409,17 @@ if(hostScene === "battleInfo" && team !== null){
 
 });
 
+socket.on('accessOK', (e) => {
+    
+moving = setInterval("move()", fps2 );    
+
+});
+
 socket.on('accessError', (e) => {
     
 error = 1;
 nextScene = "error";
+moving = setInterval("move()", fps2 );    
 
 });
 
