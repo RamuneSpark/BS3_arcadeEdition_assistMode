@@ -551,12 +551,12 @@ mapBaseNeoOpacity = 0;
 
 });
 
-
+div_tapJReq.addEventListener("touchstart", function(){
 if(phone){
     if(window.DeviceOrientationEvent){
         // ★iOS13向け: ユーザーにアクセスの許可を求める関数があるか？
         if(DeviceOrientationEvent.requestPermission){
-            div_tapJReq.addEventListener("touchstart", function(){
+
                 jReqOpacity = 0.3;
                 setTimeout(()=>{
                 // ★ジャイロセンサーのアクセス許可をリクエストする
@@ -569,13 +569,14 @@ if(phone){
                     console.log(e);
                 });
             },100)
-            });
+            
         // iOS13以外
         }else{
             // 何もしない
         }
     }
 }
+});
 
 div_tapCa.addEventListener("touchstart", (e) => {
 
