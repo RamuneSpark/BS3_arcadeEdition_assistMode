@@ -470,6 +470,9 @@ if( y <= -20){
 
     let a = 50 + y*(50/20);
 
+    if(a <= 17){
+        a = 17;
+    }
 
     return a;
 
@@ -555,6 +558,7 @@ if(phone){
         if(DeviceOrientationEvent.requestPermission){
             div_tapJReq.addEventListener("touchstart", function(){
                 jReqOpacity = 0.3;
+                setTimeout(()=>{
                 // ★ジャイロセンサーのアクセス許可をリクエストする
                 DeviceOrientationEvent.requestPermission().then(function(response){
                     // リクエストが許可されたら
@@ -564,6 +568,7 @@ if(phone){
                 }).catch(function(e){
                     console.log(e);
                 });
+            },100)
             });
         // iOS13以外
         }else{
