@@ -84,6 +84,7 @@ if(bs == -100){
     setImage(div_mapBase,"image/mapBase.png");
     setImage(div_mapBaseNeo,"image/mapBaseNeo.png");
     setImage(div_map,"image/map.png");
+    setImage(div_mapNo,"image/mapNo.png");
 
     for(let i = 0; i < 11; i++){for(let j = 0; j < 17; j++){
 
@@ -94,6 +95,7 @@ if(bs == -100){
     div_mapBaseNeo.appendChild(div_mapBase);
     div_mapBase.appendChild(div_map);
     div_mapBase.appendChild(div_mark);
+    div_map.appendChild(div_mapNo);
     div_mapBaseNeo.appendChild(div_errorText);
     div_mapBaseNeo.appendChild(div_tapNavi);
 

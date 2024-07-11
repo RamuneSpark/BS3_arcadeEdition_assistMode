@@ -68,6 +68,17 @@ div_map.style.overflow = "hidden";
 ////出力
 setImage(div_map,"");
 
+document.write( "<div id= mapNo> </div>" );
+const div_mapNo = document.getElementById( "mapNo" );
+defaultSet(div_mapNo,div_map);
+////プロパティ
+putXY(div_mapNo, "50%","0%")
+transform(div_mapNo, Center,Top,0,100)
+div_mapNo.style.zIndex = 2001;
+div_mapNo.style.overflow = "hidden";
+////出力
+setImage(div_mapNo,"");
+
 let markLo = {x:50,y:50};
 document.write( "<div id= mark> </div>" );
 const div_mark = document.getElementById( "mark" );
