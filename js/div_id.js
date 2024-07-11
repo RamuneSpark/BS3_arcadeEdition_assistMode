@@ -124,6 +124,16 @@ div_tapNavi.style.zIndex = 10000;
 ////出力
 setImage(div_tapNavi,"");
 
+document.write( "<div id= caLine> </div>" );
+const div_caLine = document.getElementById( "caLine" );
+defaultSet(div_caLine,screen);
+////プロパティ
+putXY(div_caLine,"50%",0)
+translate(div_caLine,Center,Center);
+div_caLine.style.zIndex = 1000;
+////出力
+setImage(div_caLine,"");
+
 document.write( "<div id= tapCa> </div>" );
 const div_tapCa = document.getElementById( "tapCa" );
 defaultSet(div_tapCa,screen);

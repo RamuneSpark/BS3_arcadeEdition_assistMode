@@ -342,6 +342,11 @@ if((team === null && playingBattle ==1 && (hostScene == "game" || hostScene == "
     setImage(div_tapJReq,"image/jReq.png");
         }}
 
+
+putXY(div_caLine,"50%",caLineY()+"%")
+
+setImage(div_caLine,"image/caLine.png");
+
 }else if(scene === "howTo"){
 
     putXY(div_tapCa,"50%","95%")
@@ -714,4 +719,13 @@ for(let i = 0; i < 2; i++){
             }
         }
     });
+}
+
+function caLineY(){
+
+    let a = beta + 180;
+    a *= (100/360);
+
+    return a;
+
 }
