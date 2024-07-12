@@ -7,7 +7,7 @@ if(error === 1 && scene !== "error"){
 
 }
 
-    if(scene !== "ca" && scene !== "howTo" && scene !== "error"){
+    if(scene !== "ca" && scene !== "howTo" && scene !== "error" && scene !== "jReq"){
     if(aShift == 0 && bs == 0){
         statusLo.t += 0.04;
     
@@ -81,6 +81,8 @@ if(scene === "twinkle"){
 
 if(bs == -100){
 
+    gyroCheck = 1;
+    
     setImage(div_mapBase,"image/mapBase.png");
     setImage(div_mapBaseNeo,"image/mapBaseNeo.png");
     setImage(div_map,"image/map.png");
@@ -94,7 +96,11 @@ if(bs == -100){
 
     div_mapBaseNeo.appendChild(div_mapBase);
     div_mapBase.appendChild(div_map);
+    if(touchMode === 0){
     div_mapBase.appendChild(div_mark);
+    }else if(touchMode === 1){
+    div_map.appendChild(div_mark);
+    }
     div_map.appendChild(div_mapNo);
     div_mapBaseNeo.appendChild(div_errorText);
     div_mapBaseNeo.appendChild(div_tapNavi);
@@ -146,25 +152,34 @@ if(BGX <= -380){
     }}
     
 
- 
+ /*
     setText(div_text,[hostScene,playingBattle]); 
-   
+   */
    
 
-
+    if(touchMode === 0){
     markLo.y = heightGyro();
     markLo.x = widthGyro();
-    
+
     mapLo.y = 100 - markLo.y;
     mapLo.x = 100 - markLo.x;
+    }else{
 
 
 
-    putXY(div_map,(330/2)+(300)*(mapLo.x-50)*0.01,(220/2)+(200)*(mapLo.y-50)*0.01)
+    }
+
+    if(touchMode === 0){
+        putXY(div_map,(330/2)+(300)*(mapLo.x-50)*0.01,(220/2)+(200)*(mapLo.y-50)*0.01)
+        putXY(div_mark,50+"%",50+"%")
+    }else{
+        putXY(div_map,(330/2)+(300)*(50-50)*0.01,(220/2)+(200)*(50-50)*0.01)
+        putXY(div_mark,markLo.x+"%",markLo.y+"%")
+    }
 
     setImage(div_mark,"image/mark.png");
 
-    if(beta >= 90){
+    if(beta >= 90 && touchMode === 0){
     fontSet(div_errorText,textErrorColor(),"Higashi","15","bold","right")
     setText(div_errorText,"デバイスを"+Rb("上","うえ")+"に"+Rb("向","む")+"けないでください！");
     }else{
@@ -172,14 +187,20 @@ if(BGX <= -380){
     }
 
     if(mapBaseNeoOpacity >= 1){
+if(touchMode === 0){
     setText(div_tapNavi,""+Rb("上","うえ")+"のスクリーンエリアをタップすると、<br>"+Rb("黄色","きいろ")+"のマークに"+Rb("向","む")+"かってツインクルを"+Rb("発射","はっしゃ")+"します。");
+}else{
+    setText(div_tapNavi,""+Rb("上","うえ")+"のスクリーンエリアをタップすると、<br>タップした"+Rb("場所","ばしょ")+"に"+Rb("向","む")+"かってツインクルを"+Rb("発射","はっしゃ")+"します。");
+}
     }else{
         Remove(div_tapNavi);
     
     }
 
     putXY(div_tapCa,"5%","95%")
-    setImage(div_tapCa,"image/ca.png");
+    if(touchMode === 0){
+        setImage(div_tapCa,"image/ca.png");
+    }
     translate(div_tapCa,Left,Bottom);
 
     setImage(div_tapCustom,"image/twinkle/"+colorName[cn]+"0.png");
@@ -314,7 +335,9 @@ if((team === null && playingBattle ==1 && (hostScene == "game" || hostScene == "
     
     div_mapBaseNeo.style.opacity = mapBaseNeoOpacity;
     Remove(div_vs);
-    setImage(div_tapHowTo,"image/howTo.png");
+    if(touchMode === 0){
+        setImage(div_tapHowTo,"image/howTo.png");
+    }
     Remove(div_teamText);
 
 
@@ -324,11 +347,33 @@ if((team === null && playingBattle ==1 && (hostScene == "game" || hostScene == "
 }else if(scene === "ca"){
 
     
-    putXY(div_tapCa,"50%","95%")
+    putXY(div_tapCa,"50%","85%")
     putXY(div_bg,0,0)
-    setImage(div_bg,"image/bgCa.jpg")
-    setImage(div_tapCa,"image/caOK.png");
+    setImage(div_bg,"image/bgCa"+gyroCheck+".jpg")
     translate(div_tapCa,Center,Bottom);
+
+
+
+
+           // div_tapJReq.style.opacity = 1;
+    if(gyroCheck === 0){
+        setImage(div_tapJReq,"image/jReq2.png");
+        setImage(div_tapCa,"image/gyroStart.png");
+    
+
+    }else{
+        setImage(div_tapCa,"image/caOK.png");
+    
+
+    }
+    putXY(div_tapJReq,"50%","95%")
+    translate(div_tapJReq,Center,Center);
+
+putXY(div_caLine,"50%",caLineY()+"%")
+
+setImage(div_caLine,"image/caLine.png");
+
+}else if(scene === "jReq"){
 
     jReqOpacity += 0.05;
 
@@ -336,16 +381,33 @@ if((team === null && playingBattle ==1 && (hostScene == "game" || hostScene == "
         jReqOpacity = 1;
     }
 
-    if(window.DeviceOrientationEvent){
-        if(DeviceOrientationEvent.requestPermission){
-            div_tapJReq.style.opacity = jReqOpacity;
+    
+    putXY(div_bg,0,0)
+    setImage(div_bg,"image/bgJReq"+detectIOSVersion()+".jpg")
+
+    setImage(div_touchStart,"image/touchStart.png");
+
+    if(detectIOSVersion() === 0){
+    putXY(div_tapCa,"50%","45%")
+    setImage(div_tapCa,"image/caOK.png");
+    
     setImage(div_tapJReq,"image/jReq.png");
-        }}
+    putXY(div_tapJReq,"50%","32%")
+    translate(div_tapJReq,Center,Center);
 
+    }else if(detectIOSVersion() === 1){
+    putXY(div_tapCa,"50%","45%")
+    setImage(div_tapCa,"image/caOK.png");
 
-putXY(div_caLine,"50%",caLineY()+"%")
+    Remove(div_tapJReq);
 
-setImage(div_caLine,"image/caLine.png");
+    }else if(detectIOSVersion() === 2){
+    putXY(div_tapCa,"50%","60%")
+    setImage(div_tapCa,"image/jReqOK.png");
+
+    Remove(div_tapJReq);
+
+    }
 
 }else if(scene === "howTo"){
 
@@ -461,7 +523,8 @@ window.addEventListener("deviceorientation", (event)=>{
 
 })
 
-
+let gyroCheck = 0;
+let touchMode = 0;
 
 function heightGyro(){
 
@@ -552,14 +615,48 @@ div_mapBaseNeo.addEventListener("touchstart", (e) => {
 e.preventDefault();
 
 if(mapBaseNeoOpacity == 1){
+
+if(touchMode === 0){
 socket.emit('sendTwinkle',sendData([markLo.x,markLo.y,cn,cS,(team+1)]));
 mapBaseNeoOpacity = 0;
+}else{
+        // div_mapBaseの位置とサイズを取得
+        let rect = div_map.getBoundingClientRect();
+    
+        let x = e.touches[0].clientX - rect.left;
+        let y = e.touches[0].clientY - rect.top;
+    
+        markLo.x = (x / rect.width) * 100;
+        markLo.y = (y / rect.height) * 100;
+    
+        if(markLo.x <= 0){
+            markLo.x = 0;
+        }
+        if(markLo.x >= 100){
+            markLo.x = 100;
+        }
+
+        if(markLo.y <= 0){
+            markLo.y = 0;
+        }
+        if(markLo.y >= 100){
+            markLo.y = 100;
+        }
+
+        socket.emit('sendTwinkle',sendData([markLo.x,markLo.y,cn,cS,(team+1)]));
+    mapBaseNeoOpacity = 0;
+    
+
+}
+
 }
 
 });
 
 div_tapJReq.addEventListener("touchstart", function(){
-if(phone){
+
+    if(bs === 0){
+        if(scene === "jReq"){
     if(window.DeviceOrientationEvent){
         // ★iOS13向け: ユーザーにアクセスの許可を求める関数があるか？
         if(DeviceOrientationEvent.requestPermission){
@@ -582,6 +679,11 @@ if(phone){
             // 何もしない
         }
     }
+
+    }else if(scene === "ca"){
+
+        nextScene = "jReq"
+    }
 }
 });
 
@@ -600,7 +702,20 @@ div_tapCa.addEventListener("touchstart", (e) => {
     }else if((scene === "howTo") && bs === 0){
     nextScene = "twinkle";
     soundName[2] = "back";
+    }else if((scene === "jReq") && bs === 0){
+    nextScene = "ca";
+    soundName[2] = "confirm";
     }
+
+    });
+
+    div_touchStart.addEventListener("touchstart", (e) => {
+
+    e.preventDefault();
+   
+    touchMode = 1;
+    nextScene = "twinkle";
+    
 
     });
     
@@ -726,6 +841,31 @@ function caLineY(){
     let a = beta + 180;
     a *= (100/360);
 
+    if(a >= 0 && a <= 100){}else{
+        a = 50;
+    }
+
     return a;
 
+}
+
+function detectIOSVersion() {
+    let userAgent = window.navigator.userAgent;
+    let iOS = /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream;
+    if (iOS) {
+        let match = userAgent.match(/OS (\d+)_(\d+)_?(\d+)?/);
+        let version;
+        if (match !== undefined && match !== null) {
+            version = parseInt(match[1], 10);
+        }
+        if (version >= 13) {
+            return 0;
+        } else if (version === 12) {
+            let subVersion = parseInt(match[2], 10);
+            if (subVersion === 2) {
+                return 1;
+            }
+        }
+    }
+    return 2;
 }

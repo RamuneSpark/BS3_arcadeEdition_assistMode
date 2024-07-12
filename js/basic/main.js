@@ -6,6 +6,13 @@ let t = 0;
 
 let moving;
 
+/*
+setTimeout(()=>{
+     
+moving = setInterval("move()", fps2 );    
+   
+},400)
+*/
 
 function move( ) {    
     

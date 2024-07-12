@@ -144,13 +144,23 @@ div_tapCa.style.zIndex = 10000;
 ////出力
 setImage(div_tapCa,"");
 
+document.write( "<div id= touchStart> </div>" );
+const div_touchStart = document.getElementById( "touchStart" );
+defaultSet(div_touchStart,screen);
+////プロパティ
+putXY(div_touchStart,"50%","95%")
+translate(div_touchStart,Center,Bottom);
+div_touchStart.style.zIndex = 10000;
+////出力
+setImage(div_touchStart,"");
+
 let jReqOpacity = 1;
 document.write( "<div id= tapJReq> </div>" );
 const div_tapJReq = document.getElementById( "tapJReq" );
 defaultSet(div_tapJReq,screen);
 ////プロパティ
 putXY(div_tapJReq,"95%","5%")
-translate(div_tapJReq,Bottom,Top);
+translate(div_tapJReq,Right,Top);
 div_tapJReq.style.zIndex = 10000;
 ////出力
 setImage(div_tapJReq,"");
