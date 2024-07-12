@@ -617,7 +617,7 @@ e.preventDefault();
 if(mapBaseNeoOpacity == 1){
 
 if(touchMode === 0){
-socket.emit('sendTwinkle',sendData([markLo.x,markLo.y,cn,cS,(team+1)]));
+socket.emit('sendTwinkle',sendData([markLo.x,markLo.y,cn,cS,(team+1),touchMode]));
 mapBaseNeoOpacity = 0;
 }else{
         // div_mapBaseの位置とサイズを取得
@@ -643,7 +643,7 @@ mapBaseNeoOpacity = 0;
             markLo.y = 100;
         }
 
-        socket.emit('sendTwinkle',sendData([markLo.x,markLo.y,cn,cS,(team+1)]));
+        socket.emit('sendTwinkle',sendData([markLo.x,markLo.y,cn,cS,(team+1),touchMode]));
     mapBaseNeoOpacity = 0;
     
 
