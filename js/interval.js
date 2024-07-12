@@ -648,6 +648,8 @@ e.preventDefault();
 if(mapBaseNeoOpacity == 1){
 
 if(touchMode === 0){
+
+soundName[8] = "twinkle";
 socket.emit('sendTwinkle',sendData([markLo.x,markLo.y,cn,cS,(team+1),touchMode]));
 mapBaseNeoOpacity = 0;
 }else{
@@ -674,6 +676,7 @@ mapBaseNeoOpacity = 0;
             markLo.y = 100;
         }
 
+        soundName[8] = "twinkle";
         socket.emit('sendTwinkle',sendData([markLo.x,markLo.y,cn,cS,(team+1),touchMode]));
     mapBaseNeoOpacity = 0;
     

@@ -57,6 +57,9 @@ function soundSet(i){
     }else if(soundName[i] == "select"){
         soundPlay(sound[i],0.85,false,soundName[i])
         
+    }else if(soundName[i] == "twinkle"){
+        soundPlay(sound[i],0.7,false,soundName[i])
+        
     }else if(soundName[i] == "se/itemGet"){
         soundPlay(sound[i],0.8,false,soundName[i])
         
@@ -360,7 +363,8 @@ const loadSoundName = [
                     "confirm",
                     "back",
                     "select",
-                    "1up"
+                    "1up",
+                    "twinkle"
                   ];
 
 let loadSound = [];
