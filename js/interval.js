@@ -669,8 +669,8 @@ mapBaseNeoOpacity = 0;
             markLo.x = 100;
         }
 
-        if(markLo.y <= 0){
-            markLo.y = 0;
+        if(markLo.y <= 17){
+            markLo.y = 17;
         }
         if(markLo.y >= 100){
             markLo.y = 100;
