@@ -7,7 +7,7 @@ if(error === 1 && scene !== "error"){
 
 }
 
-    if(scene !== "ca" && scene !== "howTo" && scene !== "error" && scene !== "jReq"){
+    if(scene !== "start" && scene !== "ca" && scene !== "howTo" && scene !== "error" && scene !== "jReq"){
     if(aShift == 0 && bs == 0){
         statusLo.t += 0.04;
     
@@ -385,6 +385,8 @@ setImage(div_caLine,"image/caLine.png");
     putXY(div_bg,0,0)
     setImage(div_bg,"image/bgJReq"+detectIOSVersion()+".jpg")
 
+    putXY(div_touchStart,"50%","95%")
+    translate(div_touchStart,Center,Bottom);
     setImage(div_touchStart,"image/touchStart.png");
 
     if(detectIOSVersion() === 0){
@@ -416,6 +418,35 @@ setImage(div_caLine,"image/caLine.png");
     setImage(div_bg,"image/bgHowTo.jpg")
     setImage(div_tapCa,"image/caOK.png");
     translate(div_tapCa,Center,Bottom);
+
+
+}else if(scene === "start"){
+
+    startX -= startV;
+    startV -= 0.05;
+
+    if(startV <= 0){
+    startV = 0;
+
+    }
+
+    if(startX <= 0){
+    startX = 0;
+
+    }
+
+    putXY(div_tapCa,(startX+97)+"%",(3 + Math.sin(t*0.05))+"%")
+    setImage(div_tapCa,"image/gyroSelect.png");
+    translate(div_tapCa,Right,Top);
+
+    putXY(div_touchStart,(3-startX)+"%",(53 + Math.sin(t*0.05))+"%")
+    translate(div_touchStart,Left,Top);
+    setImage(div_touchStart,"image/touchSelect.png");
+
+
+    putXY(div_bg,0,0)
+    setImage(div_bg,"image/bgStart.jpg")
+    
 
 
 }else if(scene === "error"){
@@ -692,7 +723,12 @@ div_tapCa.addEventListener("touchstart", (e) => {
     e.preventDefault();
    
     
-    if(scene === "twinkle" && bs === 0 && aShift === 1){
+    if(scene === "start" && bs === 0 && startX === 0){
+
+        nextScene = "ca";
+            
+
+    }else if(scene === "twinkle" && bs === 0 && aShift === 1){
     nextScene = "ca";
     soundName[0] = "confirm";
     }else if((scene === "ca") && bs === 0){
@@ -713,9 +749,10 @@ div_tapCa.addEventListener("touchstart", (e) => {
 
     e.preventDefault();
    
+    if(bs === 0 && startX === 0){
     touchMode = 1;
     nextScene = "twinkle";
-    
+    }
 
     });
     

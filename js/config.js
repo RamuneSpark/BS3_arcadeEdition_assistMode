@@ -1,5 +1,5 @@
 //ゲーム開始時のシーンを指定してください。
-nextScene = "ca";
+nextScene = "start";
 
 //画面暗転スピードを指定してください。
 change_level = 0.1;

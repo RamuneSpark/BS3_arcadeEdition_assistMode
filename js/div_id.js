@@ -154,6 +154,17 @@ div_touchStart.style.zIndex = 10000;
 ////出力
 setImage(div_touchStart,"");
 
+let startX = 0;
+
+for(let i = 0; i < 30; i++){
+
+    startX += 0.05*i;
+
+}
+
+let startV = 0.05*30;
+
+
 let jReqOpacity = 1;
 document.write( "<div id= tapJReq> </div>" );
 const div_tapJReq = document.getElementById( "tapJReq" );
