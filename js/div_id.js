@@ -115,9 +115,9 @@ setImage(div_errorText,"");
 
 document.write( "<div id= tapNavi> </div>" );
 const div_tapNavi = document.getElementById( "tapNavi" );
-defaultSet(div_tapNavi,mapBaseNeo);
+defaultSet(div_tapNavi,screen);
 ////プロパティ
-putXY(div_tapNavi,"50%","102%")
+putXY(div_tapNavi,"50%","65%")
 translate(div_tapNavi,Center,Top);
 fontSet(div_tapNavi,"#FFFFFF","Higashi","15","bold","center")
 div_tapNavi.style.zIndex = 10000;

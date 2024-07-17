@@ -14,6 +14,7 @@ moving = setInterval("move()", fps2 );
 },400)
 */
 
+
 function move( ) {    
     
     //画面サイズ調整

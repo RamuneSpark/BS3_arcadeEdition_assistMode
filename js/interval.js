@@ -103,7 +103,7 @@ if(bs == -100){
     }
     div_map.appendChild(div_mapNo);
     div_mapBaseNeo.appendChild(div_errorText);
-    div_mapBaseNeo.appendChild(div_tapNavi);
+
 
     div_status.appendChild(div_tapSound);
 
@@ -188,9 +188,9 @@ if(BGX <= -380){
 
     if(mapBaseNeoOpacity >= 1){
 if(touchMode === 0){
-    setText(div_tapNavi,""+Rb("上","うえ")+"のスクリーンエリアをタップすると、<br>"+Rb("黄色","きいろ")+"のマークに"+Rb("向","む")+"かってツインクルを"+Rb("発射","はっしゃ")+"します。");
+    setText(div_tapNavi,""+Rb("上","うえ")+"のスクリーンエリアをタップすると、<br>"+Rb("黄色","きいろ")+"のマークに"+Rb("向","む")+"かってツインクルを"+Rb("発射","はっしゃ")+"します。<br>"+Rb("外","はず")+"してもペナルティはありません！");
 }else{
-    setText(div_tapNavi,""+Rb("上","うえ")+"のスクリーンエリアをタップすると、<br>タップした"+Rb("場所","ばしょ")+"に"+Rb("向","む")+"かってツインクルを"+Rb("発射","はっしゃ")+"します。");
+    setText(div_tapNavi,""+Rb("上","うえ")+"のスクリーンエリアをタップすると、<br>タップした"+Rb("場所","ばしょ")+"に"+Rb("向","む")+"かってツインクルを"+Rb("発射","はっしゃ")+"します。<br>"+Rb("外","はず")+"してもペナルティはありません！");
 }
     }else{
         Remove(div_tapNavi);
@@ -342,6 +342,8 @@ if((team === null && playingBattle ==1 && (hostScene == "game" || hostScene == "
 
 
 }
+
+
 
     
 }else if(scene === "ca"){
