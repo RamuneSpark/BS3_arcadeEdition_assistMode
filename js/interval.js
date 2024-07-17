@@ -693,9 +693,6 @@ div_tapJReq.addEventListener("touchstart", function(){
 
     if(bs === 0){
         if(scene === "jReq"){
-    if(window.DeviceOrientationEvent){
-        // ★iOS13向け: ユーザーにアクセスの許可を求める関数があるか？
-        if(DeviceOrientationEvent.requestPermission){
 
                 jReqOpacity = 0.3;
                 setTimeout(()=>{
@@ -710,11 +707,7 @@ div_tapJReq.addEventListener("touchstart", function(){
                 });
             },100)
             
-        // iOS13以外
-        }else{
-            // 何もしない
-        }
-    }
+     
 
     }else if(scene === "ca"){
 
