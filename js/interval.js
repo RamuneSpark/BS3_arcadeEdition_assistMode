@@ -691,7 +691,7 @@ mapBaseNeoOpacity = 0;
 
 });
 
-div_tapJReq.addEventListener("touchstart", function(){
+div_tapJReq.addEventListener("click", function(){
 
     if(bs === 0){
         if(scene === "jReq"){
