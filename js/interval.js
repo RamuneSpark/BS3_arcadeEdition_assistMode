@@ -413,6 +413,8 @@ setImage(div_caLine,"image/caLine.png");
 
     }
 
+    div_tapJReq.style.opacity = jReqOpacity;
+
 }else if(scene === "howTo"){
 
     putXY(div_tapCa,"50%","95%")
