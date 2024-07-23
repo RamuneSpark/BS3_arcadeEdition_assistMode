@@ -187,13 +187,17 @@ if(BGX <= -380){
     }
 
     if(mapBaseNeoOpacity >= 1){
-if(touchMode === 0){
-    setText(div_tapNavi,""+Rb("上","うえ")+"のスクリーンエリアをタップすると、<br>"+Rb("黄色","きいろ")+"のマークに"+Rb("向","む")+"かってツインクルを"+Rb("発射","はっしゃ")+"します。<br>"+Rb("外","はず")+"してもペナルティはありません！");
+if(touchMode === 0 && beta < 90){
+    setText(div_tapNavi,""+Rb("上","うえ")+"のスクリーンエリアをタップすると、<br>"+Rb("黄色","きいろ")+"のマークに"+Rb("向","む")+"かってツインクルを"+Rb("発射","はっしゃ")+"します。"/*+"<br>"+Rb("外","はず")+"してもペナルティはありません！"*/);
+}else if(touchMode === 1){
+    setText(div_tapNavi,""+Rb("上","うえ")+"のスクリーンエリアをタップすると、<br>タップした"+Rb("場所","ばしょ")+"に"+Rb("向","む")+"かってツインクルを"+Rb("発射","はっしゃ")+"します。"/*+"<br>"+Rb("外","はず")+"してもペナルティはありません！"*/);
 }else{
-    setText(div_tapNavi,""+Rb("上","うえ")+"のスクリーンエリアをタップすると、<br>タップした"+Rb("場所","ばしょ")+"に"+Rb("向","む")+"かってツインクルを"+Rb("発射","はっしゃ")+"します。<br>"+Rb("外","はず")+"してもペナルティはありません！");
+    Remove(div_tapNavi);
+        
 }
     }else{
         Remove(div_tapNavi);
+        
     
     }
 
@@ -313,6 +317,8 @@ if((team === null && playingBattle ==1 && (hostScene == "game" || hostScene == "
     Remove(div_tapHowTo);
     setText(div_teamText,"チームを"+Rb("選択","せんたく")+"してください！");
 
+    Remove(div_tapNavi);
+    Remove(div_errorText);
 
 }else{
 
@@ -651,12 +657,12 @@ e.preventDefault();
 
 if(mapBaseNeoOpacity == 1){
 
-if(touchMode === 0){
+if(touchMode === 0 && beta < 90){
 
 soundName[8] = "twinkle";
 socket.emit('sendTwinkle',sendData([markLo.x,markLo.y,cn,cS,(team+1),touchMode]));
 mapBaseNeoOpacity = 0;
-}else{
+}else if(touchMode === 1){
         // div_mapBaseの位置とサイズを取得
         let rect = div_map.getBoundingClientRect();
     
