@@ -189,6 +189,28 @@ div_tapCustom.style.zIndex = 10000;
 ////出力
 setImage(div_tapCustom,"");
 
+document.write( "<div id= tapCustomNavi> </div>" );
+const div_tapCustomNavi = document.getElementById( "tapCustomNavi" );
+defaultSet(div_tapCustomNavi,screen);
+////プロパティ
+putXY(div_tapCustomNavi,"90%","87%")
+transform(div_tapCustomNavi,Right,Bottom,0,100);
+div_tapCustomNavi.style.zIndex = 10000;
+////出力
+setImage(div_tapCustomNavi,"");
+
+document.write( "<div id= tapCustomNaviText> </div>" );
+const div_tapCustomNaviText = document.getElementById( "tapCustomNaviText" );
+defaultSet(div_tapCustomNaviText,div_status);
+////プロパティ
+putXY(div_tapCustomNaviText,"50%","65%")
+translate(div_tapCustomNaviText,Center,Bottom);
+fontSet(div_tapCustomNaviText,"#5894D0","Higashi","15","bold","left")
+div_tapCustomNaviText.style.zIndex = 10000;
+//textEdge(div_tapCustomNaviText,2,"#000000")
+////出力
+setText(div_tapCustomNaviText,"");
+
 let allowSound = 0;
 document.write( "<div id= tapSound> </div>" );
 const div_tapSound = document.getElementById( "tapSound" );

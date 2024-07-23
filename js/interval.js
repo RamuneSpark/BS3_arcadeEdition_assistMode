@@ -211,6 +211,54 @@ if(touchMode === 0 && beta < 90){
 
     div_tapCustom.appendChild(div_tapCustom2);
 
+    putXY(div_tapCustomNavi,"90%",(86.5+Math.sin(t*0.07)*0.5)+"%")
+    setImage(div_tapCustomNavi,"image/customNavi.png");
+
+    div_tapCustomNavi.appendChild(div_tapCustomNaviText)
+
+    if(customName[cS] === "ribbon"){
+
+        setText(div_tapCustomNaviText,"アタシをタップすると<br>キャラカスタムができるわよ！");
+
+    }else if(customName[cS] === "samurai"){
+
+        setText(div_tapCustomNaviText,""+Rb("拙者","せっしゃ")+"をタップすると<br>キャラカスタムできるでござる！");
+
+    }else if(customName[cS] === "cat"){
+
+        setText(div_tapCustomNaviText,"ボクをタップすると<br>キャラカスタムができるニャ！");
+
+    }else if(customName[cS] === "pirate"){
+
+        setText(div_tapCustomNaviText,"おれをタップすれば<br>キャラカスタムもできる！");
+
+    }else if(customName[cS] === "zonk"){
+
+        setText(div_tapCustomNaviText,"オレをタップすると<br>キャラカスタムができるぞ！");
+
+    }else if(customName[cS] === "cry"){
+
+        setText(div_tapCustomNaviText,"ボクをタップすると<br>キャラカスタムできるよ…。");
+
+    }else if(customName[cS] === "paint"){
+
+        setText(div_tapCustomNaviText,"ボクをタップすると<br>キャラカスタムできるんだ！");
+
+    }else if(customName[cS] === "racquet"){
+
+        setText(div_tapCustomNaviText,"ラケットボールは<br>アイガードが"+Rb("必須","ひっす")+"なんだ。");
+
+    }else if(customName[cS] === "japan"){
+
+        setText(div_tapCustomNaviText,"キャラカスタムせずとも<br>ボクが"+Rb("一番","いちばん")+"　ぢゃな！");
+
+    }else{
+
+        setText(div_tapCustomNaviText,"ボクをタップすると<br>キャラカスタムができるよ！");
+
+
+    }
+    
     if(customName[cS] === ""){
         Remove(div_tapCustom2);
     }else{
