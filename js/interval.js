@@ -327,7 +327,7 @@ if((team === null && playingBattle ==1 && (hostScene == "game" || hostScene == "
         Remove(div_teamSelect[1]);
         setImage(div_teamSelect[0],"image/"+(team+1)+"p.png");
         div_teamSelect[0].style.opacity = 1;
-        putXY(div_teamSelect[0],"30%","80%")
+        putXY(div_teamSelect[0],"30%","20%")
         transform(div_teamSelect[0],Center,Center,0,130);
     
 
