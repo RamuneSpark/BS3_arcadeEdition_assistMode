@@ -196,6 +196,7 @@ defaultSet(div_tapCustomNavi,screen);
 putXY(div_tapCustomNavi,"90%","87%")
 transform(div_tapCustomNavi,Right,Bottom,0,100);
 div_tapCustomNavi.style.zIndex = 10000;
+div_tapCustomNavi.style.overflow = "hidden";
 ////出力
 setImage(div_tapCustomNavi,"");
 
